@@ -431,7 +431,10 @@ ifeq (${AVRDUDE_PROGRAMMER}, arduino)
 	stty -hup < $(UPLOAD_PORT); true
 endif
 
-	# Display size of file.
+flash: $(BUILD_DIR)/$(TARGET).hex
+	$(AVRDUDE) $(AVRDUDE_FLAGS) -V $(AVRDUDE_WRITE_FLASH)
+
+# Display size of file.
 HEXSIZE = $(SIZE) --target=$(FORMAT) $(BUILD_DIR)/$(TARGET).hex
 ELFSIZE = $(SIZE) --mcu=$(MCU) -C $(BUILD_DIR)/$(TARGET).elf; \
           $(SIZE)  $(BUILD_DIR)/$(TARGET).elf
