@@ -239,7 +239,7 @@
 
 bool Running = true;
 
-uint8_t marlin_debug_flags = DEBUG_INFO | DEBUG_ERRORS;
+uint8_t marlin_debug_flags = DEBUG_INFO | DEBUG_ERRORS | DEBUG_DRYRUN;
 
 static float feedrate = 1500.0, saved_feedrate;
 float current_position[NUM_AXIS] = { 0.0 };
