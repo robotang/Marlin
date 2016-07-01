@@ -306,7 +306,7 @@ endif
 ifeq ($(U8GLIB), 1)
 VPATH += $(ARDUINO_INSTALL_DIR)/libraries/U8glib/src
 VPATH += $(ARDUINO_INSTALL_DIR)/libraries/U8glib/src/clib
-SRC += u8g_font.c u8g_clip.c u8g_ll_api.c u8g_state.c u8g_delay.c u8g_pb32h1.c u8g_page.c u8g_pb.c u8g_rect.c u8g_bitmap.c u8g_com_null.c
+SRC += u8g_font.c u8g_clip.c u8g_ll_api.c u8g_state.c u8g_delay.c u8g_pb32h1.c u8g_page.c u8g_pb.c u8g_rect.c u8g_bitmap.c u8g_com_null.c u8g_rot.c
 CXXSRC += U8glib.cpp
 endif
 
