@@ -63,6 +63,9 @@ LIQUID_TWI2        ?= 0
 # this defines if Wire is needed
 WIRE               ?= 0
 
+# this defines if U8glib is needed
+U8GLIB             ?= 1
+
 ############################################################################
 # Below here nothing should be changed...
 
@@ -287,7 +290,7 @@ CXXSRC = WMath.cpp WString.cpp Print.cpp Marlin_main.cpp	\
 	SdFile.cpp SdVolume.cpp planner.cpp stepper.cpp \
 	temperature.cpp cardreader.cpp configuration_store.cpp \
 	watchdog.cpp SPI.cpp servo.cpp Tone.cpp ultralcd.cpp digipot_mcp4451.cpp \
-	vector_3.cpp qr_solve.cpp buzzer.cpp
+	vector_3.cpp qr_solve.cpp buzzer.cpp 
 ifeq ($(LIQUID_TWI2), 0)
 CXXSRC += LiquidCrystal.cpp
 else
@@ -298,6 +301,13 @@ endif
 ifeq ($(WIRE), 1)
 SRC += twi.c
 CXXSRC += Wire.cpp
+endif
+
+ifeq ($(U8GLIB), 1)
+VPATH += $(ARDUINO_INSTALL_DIR)/libraries/U8glib/src
+VPATH += $(ARDUINO_INSTALL_DIR)/libraries/U8glib/src/clib
+SRC += u8g_font.c u8g_clip.c u8g_ll_api.c u8g_state.c u8g_delay.c u8g_pb32h1.c u8g_page.c u8g_pb.c u8g_rect.c u8g_bitmap.c u8g_com_null.c
+CXXSRC += U8glib.cpp
 endif
 
 #Check for Arduino 1.0.0 or higher and use the correct sourcefiles for that version
